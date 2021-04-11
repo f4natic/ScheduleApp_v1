@@ -1,5 +1,6 @@
 package ru.f4n.app;
 
+import ru.f4n.app.frame.AppFrame;
 import ru.f4n.app.models.User;
 
 import java.io.BufferedReader;
@@ -60,5 +61,7 @@ public class App {
                 System.out.println(u);
             }
         }
+
+        new AppFrame();
     }
 }
