@@ -99,4 +99,19 @@ public class User {
     public void setStudent(boolean student) {
         isStudent = student;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", purchasedClasses=" + purchasedClasses +
+                ", conductedClasses=" + conductedClasses +
+                ", paid=" + paid +
+                ", residue=" + residue +
+                ", nextLessonDate=" + nextLessonDate +
+                ", isStudent=" + isStudent +
+                '}';
+    }
 }
