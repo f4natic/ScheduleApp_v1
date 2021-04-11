@@ -3,7 +3,6 @@ package ru.f4n.app;
 import ru.f4n.app.frame.AppFrame;
 import ru.f4n.app.models.User;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -62,6 +61,6 @@ public class App {
             }
         }
 
-        new AppFrame();
+        new AppFrame(usersList);
     }
 }
