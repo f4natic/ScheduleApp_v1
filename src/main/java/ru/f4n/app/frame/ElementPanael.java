@@ -17,9 +17,13 @@ public class ElementPanael extends JPanel {
     private JScrollPane scrollPane;
 
     private JCheckBox showToday;
+    private JButton spendLesson;
+
     private JButton addUser;
     private JButton deleteUser;
-    private JButton spendLesson;
+
+    private JButton saveIn;
+    private JButton readOn;
 
     public ElementPanael() {}
 
@@ -39,7 +43,8 @@ public class ElementPanael extends JPanel {
         purchasedClasses.addItem(4);
         purchasedColumn.setCellEditor(new DefaultCellEditor(purchasedClasses));
 
-        showToday = new JCheckBox("Показать, записанных на сегодня");
+        showToday = new JCheckBox("Показать учеников, записанных на сегодня");
+        spendLesson = new JButton("Провести урок");
 
         addUser = new JButton("Добавить пользователя");
         addUser.addActionListener(new ActionListener() {
@@ -71,12 +76,15 @@ public class ElementPanael extends JPanel {
             }
         });
 
-        spendLesson = new JButton("Провести урок");
+        saveIn = new JButton("Сохранить в БД");
+        readOn = new JButton("Прочитать из БД");
 
         initialize();
     }
 
     private void initialize() {
+        groupLayout.linkSize(SwingConstants.HORIZONTAL, showToday, addUser, deleteUser, saveIn, readOn);
+        groupLayout.linkSize(SwingConstants.VERTICAL, showToday, addUser, deleteUser, saveIn, readOn);
         groupLayout.setHorizontalGroup(
                 groupLayout.createParallelGroup()
                 .addComponent(scrollPane)
@@ -92,6 +100,12 @@ public class ElementPanael extends JPanel {
                                         groupLayout.createParallelGroup()
                                                 .addComponent(addUser)
                                                 .addComponent(deleteUser)
+
+                                )
+                                .addGroup(
+                                        groupLayout.createParallelGroup()
+                                                .addComponent(saveIn)
+                                                .addComponent(readOn)
 
                                 )
                 )
@@ -110,6 +124,11 @@ public class ElementPanael extends JPanel {
                                         groupLayout.createSequentialGroup()
                                                 .addComponent(addUser)
                                                 .addComponent(deleteUser)
+                                )
+                                .addGroup(
+                                        groupLayout.createSequentialGroup()
+                                                .addComponent(saveIn)
+                                                .addComponent(readOn)
                                 )
                 )
         );
