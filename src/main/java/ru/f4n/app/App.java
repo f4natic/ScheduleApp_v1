@@ -40,7 +40,7 @@ public class App {
             }
         });
 
-        User user = new User(1, "Nicolay", "Ivushkin",
+        User user = new User(usersList.size() + 1, "Nicolay", "Ivushkin",
                 2, 1, 1200, 600,
                 dateFormat.parse("2021-06-15 18:00"), true);
         usersList.add(user);
@@ -49,6 +49,7 @@ public class App {
         System.out.println(now);
         long l = now.getTime() +86400000;
         now = new Date(l);
+
         for(User u : usersList) {
             if(u.getNextLessonDate().before(now)) {
                 System.out.println(u);

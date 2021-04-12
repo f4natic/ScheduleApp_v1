@@ -126,4 +126,8 @@ public class AppTableModel extends AbstractTableModel {
                 throw new IllegalStateException("Unexpected value: " + columnIndex);
         }
     }
+
+    public void updateTable() {
+        fireTableDataChanged();
+    }
 }
