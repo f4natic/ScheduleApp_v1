@@ -2,6 +2,7 @@ package ru.f4n.app;
 
 import ru.f4n.app.frame.AppFrame;
 import ru.f4n.app.models.User;
+import ru.f4n.app.utils.DateFormatUtils;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -47,21 +48,16 @@ public class App {
 
         Date now = new Date();
         System.out.println(now);
-        long l = now.getTime() +86400000;
+        long l = now.getTime() + 86400000;
         now = new Date(l);
+        System.out.println(now);
 
         for(User u : usersList) {
-            if(u.getNextLessonDate().before(now)) {
-                System.out.println(u);
-            }
+            System.out.println(u);
         }
 
-        for(User u : usersList) {
-            if(u.getNextLessonDate().after(now)) {
-                System.out.println(u);
-            }
-        }
-
+        System.out.println(DateFormatUtils.getDate("2001-12-12 15:00"));
+        System.out.println(DateFormatUtils.getStringDate(now));
         new AppFrame(usersList);
     }
 }

@@ -1,6 +1,7 @@
 package ru.f4n.app.frame.table_model;
 
 import ru.f4n.app.models.User;
+import ru.f4n.app.utils.DateFormatUtils;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.Date;
@@ -54,7 +55,7 @@ public class AppTableModel extends AbstractTableModel {
                 result = (Object) user.getResidue();
                 break;
             case 7:
-                result = (Object) user.getNextLessonDate();
+                result = (Object) DateFormatUtils.getStringDate(user.getNextLessonDate());
                 break;
             case 8:
                 result = (Object) user.isStudent();
@@ -117,7 +118,7 @@ public class AppTableModel extends AbstractTableModel {
                 user.setResidue((int) value);
                 break;
             case 7:
-                user.setNextLessonDate((Date) value);
+                user.setNextLessonDate(DateFormatUtils.getDate((String)value));
                 break;
             case 8:
                 user.setStudent((boolean) value);
@@ -125,6 +126,11 @@ public class AppTableModel extends AbstractTableModel {
             default:
                 throw new IllegalStateException("Unexpected value: " + columnIndex);
         }
+    }
+
+    public void deleteRow(int rowIndex) {
+        data.remove(rowIndex);
+        updateTable();
     }
 
     public void updateTable() {

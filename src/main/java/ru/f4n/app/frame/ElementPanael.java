@@ -16,9 +16,13 @@ public class ElementPanael extends JPanel {
     private GroupLayout groupLayout;
     private JScrollPane scrollPane;
 
+    private JCheckBox showToday;
     private JButton addUser;
+    private JButton deleteUser;
+    private JButton spendLesson;
 
     public ElementPanael() {}
+
     public ElementPanael(List<User> userList) {
         groupLayout = new GroupLayout(this);
         setLayout(groupLayout);
@@ -35,6 +39,7 @@ public class ElementPanael extends JPanel {
         purchasedClasses.addItem(4);
         purchasedColumn.setCellEditor(new DefaultCellEditor(purchasedClasses));
 
+        showToday = new JCheckBox("Показать, записанных на сегодня");
 
         addUser = new JButton("Добавить пользователя");
         addUser.addActionListener(new ActionListener() {
@@ -51,11 +56,22 @@ public class ElementPanael extends JPanel {
                         new Date(),
                         false
                 );
-
                 userList.add(user);
                 tableModel.updateTable();
             }
         });
+
+        deleteUser = new JButton("Удалить пользователя");
+        deleteUser.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(mainTable.getSelectedRow() > -1){
+                    tableModel.deleteRow(mainTable.getSelectedRow());
+                }else return;
+            }
+        });
+
+        spendLesson = new JButton("Провести урок");
 
         initialize();
     }
@@ -66,13 +82,36 @@ public class ElementPanael extends JPanel {
                 .addComponent(scrollPane)
                 .addGroup(
                         groupLayout.createSequentialGroup()
-                        .addComponent(addUser)
+                                .addGroup(
+                                        groupLayout.createParallelGroup()
+                                                .addComponent(showToday)
+                                                .addComponent(spendLesson)
+
+                                )
+                                .addGroup(
+                                        groupLayout.createParallelGroup()
+                                                .addComponent(addUser)
+                                                .addComponent(deleteUser)
+
+                                )
                 )
         );
         groupLayout.setVerticalGroup(
                 groupLayout.createSequentialGroup()
                 .addComponent(scrollPane)
-                .addComponent(addUser)
+                .addGroup(
+                        groupLayout.createParallelGroup()
+                                .addGroup(
+                                        groupLayout.createSequentialGroup()
+                                                .addComponent(showToday)
+                                                .addComponent(spendLesson)
+                                )
+                                .addGroup(
+                                        groupLayout.createSequentialGroup()
+                                                .addComponent(addUser)
+                                                .addComponent(deleteUser)
+                                )
+                )
         );
     }
 }
