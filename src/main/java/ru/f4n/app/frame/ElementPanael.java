@@ -4,7 +4,9 @@ import ru.f4n.app.frame.table_model.AppTableModel;
 import ru.f4n.app.models.User;
 
 import javax.swing.*;
+import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
@@ -45,6 +47,18 @@ public class ElementPanael extends JPanel {
 
         showToday = new JCheckBox("Показать учеников, записанных на сегодня");
         spendLesson = new JButton("Провести урок");
+        spendLesson.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int rowIndex = mainTable.getSelectedRow();
+                if(rowIndex < 0) return;
+                int value = (int) tableModel.getValueAt(rowIndex, 4) + 1;
+                System.out.println(value);
+                tableModel.setValueAt(value, rowIndex, 4);
+
+                tableModel.updateTable();
+            }
+        });
 
         addUser = new JButton("Добавить пользователя");
         addUser.addActionListener(new ActionListener() {

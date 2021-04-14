@@ -96,9 +96,6 @@ public class AppTableModel extends AbstractTableModel {
         User user = data.get(rowIndex);
 
         switch(columnIndex) {
-            case 0:
-                user.setId((long) value);
-                break;
             case 1:
                 user.setFirstName((String) value);
                 break;
@@ -113,9 +110,8 @@ public class AppTableModel extends AbstractTableModel {
                 break;
             case 5:
                 user.setPaid((int) value);
-                break;
-            case 6:
-                user.setResidue((int) value);
+                user.setResidue(user.getResidue() + (int)value);
+                updateTable();
                 break;
             case 7:
                 user.setNextLessonDate(DateFormatUtils.getDate((String)value));
