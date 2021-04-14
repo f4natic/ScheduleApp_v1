@@ -113,6 +113,10 @@ public class AppTableModel extends AbstractTableModel {
                 user.setResidue(user.getResidue() + (int)value);
                 updateTable();
                 break;
+            case 6:
+                user.setResidue(user.getResidue() - (int) value);
+                updateTable();
+                break;
             case 7:
                 user.setNextLessonDate(DateFormatUtils.getDate((String)value));
                 break;

@@ -53,10 +53,9 @@ public class ElementPanael extends JPanel {
                 int rowIndex = mainTable.getSelectedRow();
                 if(rowIndex < 0) return;
                 int value = (int) tableModel.getValueAt(rowIndex, 4) + 1;
-                System.out.println(value);
                 tableModel.setValueAt(value, rowIndex, 4);
-
-                tableModel.updateTable();
+                int result = (int) tableModel.getValueAt(rowIndex, 5) / (int) tableModel.getValueAt(rowIndex,3);
+                tableModel.setValueAt(result, rowIndex, 6);
             }
         });
 

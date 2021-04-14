@@ -46,18 +46,18 @@ public class App {
                 dateFormat.parse("2021-06-15 18:00"), true);
         usersList.add(user);
 
-        Date now = new Date();
-        System.out.println(now);
-        long l = now.getTime() + 86400000;
-        now = new Date(l);
-        System.out.println(now);
-
-        for(User u : usersList) {
-            System.out.println(u);
-        }
-
-        System.out.println(DateFormatUtils.getDate("2001-12-12 15:00"));
-        System.out.println(DateFormatUtils.getStringDate(now));
+//        Date now = new Date();
+//        System.out.println(now);
+//        long l = now.getTime() + 86400000;
+//        now = new Date(l);
+//        System.out.println(now);
+//
+//        for(User u : usersList) {
+//            System.out.println(u);
+//        }
+//
+//        System.out.println(DateFormatUtils.getDate("2001-12-12 15:00"));
+//        System.out.println(DateFormatUtils.getStringDate(now));
         new AppFrame(usersList);
     }
 }
