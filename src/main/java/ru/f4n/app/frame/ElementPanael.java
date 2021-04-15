@@ -152,8 +152,8 @@ public class ElementPanael extends JPanel {
                                 )
                                 .addGroup(
                                         groupLayout.createParallelGroup()
-                                                .addComponent(saveIn)
                                                 .addComponent(readOn)
+                                                .addComponent(saveIn)
 
                                 )
                 )
@@ -175,8 +175,8 @@ public class ElementPanael extends JPanel {
                                 )
                                 .addGroup(
                                         groupLayout.createSequentialGroup()
-                                                .addComponent(saveIn)
                                                 .addComponent(readOn)
+                                                .addComponent(saveIn)
                                 )
                 )
         );
