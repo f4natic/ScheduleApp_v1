@@ -7,7 +7,7 @@ import javax.swing.table.AbstractTableModel;
 import java.util.List;
 
 public class AppTableModel extends AbstractTableModel {
-    private String[] columnTitle = {"id", "Имя", "Фамиля",
+    private String[] columnTitle = {"id", "Имя", "Фамилия",
                                     "Куплено занятий", "Проведено занятий",
                                     "Оплачено", "Остаток", "Дата следующего занятия", "Ученик"
                                     };
