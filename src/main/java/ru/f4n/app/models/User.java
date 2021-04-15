@@ -1,5 +1,7 @@
 package ru.f4n.app.models;
 
+import ru.f4n.app.utils.DateFormatUtils;
+
 import java.util.Date;
 
 public class User {
@@ -102,16 +104,17 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", purchasedClasses=" + purchasedClasses +
-                ", conductedClasses=" + conductedClasses +
-                ", paid=" + paid +
-                ", residue=" + residue +
-                ", nextLessonDate=" + nextLessonDate +
-                ", isStudent=" + isStudent +
-                '}';
+        String result = new String(
+                id + "*" +
+                        firstName + "*" +
+                        lastName + "*" +
+                        purchasedClasses + "*" +
+                        conductedClasses + "*" +
+                        paid + "*" +
+                        residue + "*" +
+                        DateFormatUtils.getStringDate(nextLessonDate) + "*" +
+                        isStudent
+                );
+        return result;
     }
 }
