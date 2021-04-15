@@ -20,44 +20,6 @@ public class App {
      */
 
     public static void main(String[] args) throws IOException, ParseException {
-
-        SimpleDateFormat dateFormat = new SimpleDateFormat();
-        dateFormat.applyPattern("yyyy-MM-dd hh:mm");
-
-        Path p = Paths.get("users.fff");
-
-        List<User> usersList = new ArrayList<>();
-
-        Files.lines(p).forEach(s -> {
-            String[] array = s.split("\\*");
-            try {
-                User user = new User(Long.parseLong(array[0]), array[1], array[2],
-                                        Integer.parseInt(array[3]), Integer.parseInt(array[4]),
-                                        Integer.parseInt(array[5]), Integer.parseInt(array[6]),
-                                        dateFormat.parse(array[7]), Boolean.parseBoolean(array[8]));
-                usersList.add(user);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-        });
-
-        User user = new User(usersList.size() + 1, "Nicolay", "Ivushkin",
-                2, 1, 1200, 600,
-                dateFormat.parse("2021-06-15 18:00"), true);
-        usersList.add(user);
-
-//        Date now = new Date();
-//        System.out.println(now);
-//        long l = now.getTime() + 86400000;
-//        now = new Date(l);
-//        System.out.println(now);
-//
-//        for(User u : usersList) {
-//            System.out.println(u);
-//        }
-//
-//        System.out.println(DateFormatUtils.getDate("2001-12-12 15:00"));
-//        System.out.println(DateFormatUtils.getStringDate(now));
-        new AppFrame(usersList);
+        new AppFrame();
     }
 }

@@ -4,7 +4,6 @@ import ru.f4n.app.models.User;
 import ru.f4n.app.utils.DateFormatUtils;
 
 import javax.swing.table.AbstractTableModel;
-import java.util.Date;
 import java.util.List;
 
 public class AppTableModel extends AbstractTableModel {
@@ -104,6 +103,10 @@ public class AppTableModel extends AbstractTableModel {
                 break;
             case 3:
                 user.setPurchasedClasses((int) value);
+                user.setConductedClasses(0);
+                user.setPaid(0);
+                user.setResidue(0);
+                updateTable();
                 break;
             case 4:
                 user.setConductedClasses((int) value);
@@ -131,6 +134,10 @@ public class AppTableModel extends AbstractTableModel {
     public void deleteRow(int rowIndex) {
         data.remove(rowIndex);
         updateTable();
+    }
+
+    public void setData(List<User> data) {
+        this.data = data;
     }
 
     public void updateTable() {

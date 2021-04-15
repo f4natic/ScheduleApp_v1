@@ -6,10 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class AppFrame {
-    private List<User> userList;
 
-    public AppFrame(List<User> userList){
-        this.userList = userList;
+    public AppFrame(){
         EventQueue.invokeLater(() -> initialize());
     }
 
@@ -19,7 +17,7 @@ public class AppFrame {
         Dimension dimension = toolkit.getScreenSize();
         mainFrame.setSize(dimension);
         mainFrame.setTitle("Schedule");
-        mainFrame.add(new ElementPanael(userList));
+        mainFrame.add(new ElementPanael());
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setVisible(true);
     }

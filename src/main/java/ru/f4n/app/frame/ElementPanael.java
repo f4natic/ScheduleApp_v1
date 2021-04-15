@@ -2,6 +2,8 @@ package ru.f4n.app.frame;
 
 import ru.f4n.app.frame.table_model.AppTableModel;
 import ru.f4n.app.models.User;
+import ru.f4n.app.utils.FileLoader;
+import ru.f4n.app.utils.FileWritter;
 
 import javax.swing.*;
 import javax.swing.table.TableCellEditor;
@@ -9,8 +11,10 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Date;
-import java.util.List;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class ElementPanael extends JPanel {
 
@@ -26,10 +30,9 @@ public class ElementPanael extends JPanel {
 
     private JButton saveIn;
     private JButton readOn;
+    private List<User> userList = new ArrayList<>();;
 
-    public ElementPanael() {}
-
-    public ElementPanael(List<User> userList) {
+    public ElementPanael() {
         groupLayout = new GroupLayout(this);
         setLayout(groupLayout);
         groupLayout.setAutoCreateGaps(true);
@@ -46,6 +49,24 @@ public class ElementPanael extends JPanel {
         purchasedColumn.setCellEditor(new DefaultCellEditor(purchasedClasses));
 
         showToday = new JCheckBox("Показать учеников, записанных на сегодня");
+        showToday.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if(showToday.isSelected()) {
+                    List<User> list = userList.stream().filter(u ->
+                            u.getNextLessonDate().before(new Date(new Date().getTime() + 86400000)) &&
+                                    u.getNextLessonDate().after(new Date(new Date().getTime() - 86400000))&&
+                                    u.isStudent()
+                    ).collect(Collectors.toList());
+                    tableModel.setData(list);
+                    tableModel.updateTable();
+                }else {
+                    tableModel.setData(userList);
+                    tableModel.updateTable();
+                }
+            }
+        });
+
         spendLesson = new JButton("Провести урок");
         spendLesson.addActionListener(new ActionListener() {
             @Override
@@ -90,7 +111,21 @@ public class ElementPanael extends JPanel {
         });
 
         saveIn = new JButton("Сохранить в БД");
+        saveIn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                FileWritter.write(userList);
+            }
+        });
         readOn = new JButton("Прочитать из БД");
+        readOn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                userList = FileLoader.load();
+                tableModel.setData(userList);
+                tableModel.updateTable();
+            }
+        });
 
         initialize();
     }
