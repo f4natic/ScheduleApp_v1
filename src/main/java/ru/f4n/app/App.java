@@ -19,7 +19,7 @@ public class App {
         dateFormat.applyPattern("yyyy-MM-dd hh:mm");
      */
 
-    public static void main(String[] args) throws IOException, ParseException {
+    public static void main(String[] args) {
         new AppFrame();
     }
 }

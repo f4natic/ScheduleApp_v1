@@ -26,9 +26,6 @@ public class FileLoader {
                             DateFormatUtils.getDate(array[7]), Boolean.parseBoolean(array[8]));
                     usersList.add(user);
                 });
-
-                usersList.forEach(u ->
-                        System.out.println(u));
             }
         } catch (IOException ex) {
             ex.printStackTrace();
