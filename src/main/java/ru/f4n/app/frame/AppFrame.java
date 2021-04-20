@@ -1,7 +1,5 @@
 package ru.f4n.app.frame;
 
-import ru.f4n.app.models.User;
-import java.util.List;
 import javax.swing.*;
 import java.awt.*;
 

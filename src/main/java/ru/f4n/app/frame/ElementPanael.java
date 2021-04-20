@@ -6,9 +6,7 @@ import ru.f4n.app.utils.FileLoader;
 import ru.f4n.app.utils.FileWritter;
 
 import javax.swing.*;
-import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableColumn;
-import javax.swing.table.TableColumnModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
